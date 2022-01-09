@@ -5,7 +5,7 @@
 
 
 
-# Liunx-一键安装脚本
+# Linux-一键安装脚本
 好处：适合又想要Linux稳定性的，又不懂Linux的小白的学习者<br />
 功能：包含自启动和进程守护，重启后可以自动运行，会放开防火墙和连接数限制，一键搞定<br />
 要求：Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统<br />
@@ -39,7 +39,7 @@ yum update -y && yum install curl -y
 ```
 安装好 curl 之后就能安装脚本了
 
-# Liunx-手动安装
+# Linux-手动安装
 ```bash
 git clone https://github.com/ethminerproxy/MinerProxy.git
 cd MinerProxy

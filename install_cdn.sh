@@ -75,7 +75,7 @@ install_download() {
 
     mkdir ./MinerProxy
     cd MinerProxy
-    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@3.0.3/minerProxy_3.0.3_linux 
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/minerProxy_3.0.3_linux 
     cd ../
     if [[ ! -d ./MinerProxy ]]; then
         echo

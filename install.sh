@@ -62,12 +62,12 @@ install_download() {
     installPath="/etc/MinerProxy"
     $cmd update -y
     if [[ $cmd == "apt-get" ]]; then
-        $cmd install -y lrzsz git zip unzip curl wget supervisor
+        $cmd install -y git curl wget supervisor
         service supervisor restart
     else
         $cmd install -y epel-release
         $cmd update -y
-        $cmd install -y lrzsz git zip unzip curl wget supervisor
+        $cmd install -y git curl wget supervisor
         systemctl enable supervisord
         service supervisord restart
     fi

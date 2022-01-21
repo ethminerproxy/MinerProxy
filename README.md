@@ -16,7 +16,7 @@ bash <(curl -s -L https://git.io/JSHO2)
 ```
 # 无法访问github的大陆服务器:
 ```bash
-bash <(curl -s -L https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/install.sh)
+bash <(curl -s -L https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/install_cn.sh)
 ```
 ### 输入命令回车之后一直卡住不动，换这种办法
 ubuntu/debian 系统安装

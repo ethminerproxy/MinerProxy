@@ -10,8 +10,13 @@
 功能：包含自启动和进程守护，重启后可以自动运行，会放开防火墙和连接数限制，一键搞定<br />
 要求：Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统<br />
 使用 root 用户输入下面命令安装或卸载<br />
+# 可直连github的服务器:
 ```bash
 bash <(curl -s -L https://git.io/JSHO2)
+```
+# 无法访问github的大陆服务器:
+```bash
+bash <(curl -s -L https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/install_cn.sh)
 ```
 ### 输入命令回车之后一直卡住不动，换这种办法
 ubuntu/debian 系统安装

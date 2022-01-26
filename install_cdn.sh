@@ -101,7 +101,6 @@ start_write_config() {
     echo "下载完成，开启守护"
     echo
     supervisorctl stop all
-    #chmod 777 $installPath/minerProxy_3.0.3_linux
     chmod a+x $installPath/minerProxy_3.0.3_linux
     if [ -d "/etc/supervisor/conf/" ]; then
         rm /etc/supervisor/conf/MinerProxy.conf -f

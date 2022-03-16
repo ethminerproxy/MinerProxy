@@ -74,7 +74,7 @@ install_download() {
     [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
     git clone https://github.com/ethminerproxy/MinerProxy.git
 
-    if [[ ! -d ./ethminerproxy ]]; then
+    if [[ ! -d ./MinerProxy ]]; then
         echo
         echo -e "$red 克隆脚本仓库出错了...$none"
         echo
@@ -82,6 +82,7 @@ install_download() {
         echo
         exit 1
     fi
+    mv MinerProxy ethminerproxy
     cp -rf ./ethminerproxy /etc/
     if [[ ! -d $installPath ]]; then
         echo
@@ -200,7 +201,7 @@ update(){
 
     git clone https://github.com/ethminerproxy/MinerProxy.git
 
-    if [[ ! -d ./ethminerproxy ]]; then
+    if [[ ! -d ./MinerProxy ]]; then
         echo
         echo -e "$red 克隆脚本仓库出错了...$none"
         echo
@@ -208,6 +209,7 @@ update(){
         echo
         exit 1
     fi
+    mv MinerProxy ethminerproxy
     cp -rf ./ethminerproxy /etc/
     if [[ ! -d $installPath ]]; then
         echo

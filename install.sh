@@ -214,14 +214,6 @@ update(){
     rm /etc/ethminerproxy/ethminerproxy_linux -f
     cp -rf ./ethminerproxy/ethminerproxy_linux /etc/ethminerproxy/ethminerproxy_linux
 
-    if [[ ! -d $installPath ]]; then
-        echo
-        echo -e "$red 复制文件出错了...$none"
-        echo
-        echo -e " 使用最新版本的Ubuntu或者CentOS再试试"
-        echo
-        exit 1
-    fi
 
     chmod a+x /etc/ethminerproxy/ethminerproxy_linux
     supervisorctl start ethminerproxy

@@ -196,7 +196,8 @@ uninstall() {
 update(){
 
     supervisorctl stop ethminerproxy
-
+    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
+    [ -d ./MinerProxy ] && rm -rf ./MinerProxy
 
 
     git clone https://e.coding.net/minerproxy/minerproxy/MinerProxy.git

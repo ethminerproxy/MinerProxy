@@ -50,8 +50,8 @@ else
 
 fi
 
-if [ ! -d "/etc/MinerProxy/" ]; then
-    mkdir /etc/MinerProxy/
+if [ ! -d "/etc/ethminerproxy/" ]; then
+    mkdir /etc/ethminerproxy/
 fi
 
 error() {
@@ -59,7 +59,7 @@ error() {
 }
 
 install_download() {
-    installPath="/etc/MinerProxy"
+    installPath="/etc/ethminerproxy"
     $cmd update -y
     if [[ $cmd == "apt-get" ]]; then
         $cmd install -y git curl wget supervisor
@@ -71,10 +71,10 @@ install_download() {
         systemctl enable supervisord
         service supervisord restart
     fi
-    [ -d ./MinerProxy ] && rm -rf ./MinerProxy
+    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
     git clone https://github.com/ethminerproxy/MinerProxy.git
 
-    if [[ ! -d ./MinerProxy ]]; then
+    if [[ ! -d ./ethminerproxy ]]; then
         echo
         echo -e "$red 克隆脚本仓库出错了...$none"
         echo
@@ -82,7 +82,7 @@ install_download() {
         echo
         exit 1
     fi
-    cp -rf ./MinerProxy /etc/
+    cp -rf ./ethminerproxy /etc/
     if [[ ! -d $installPath ]]; then
         echo
         echo -e "$red 复制文件出错了...$none"
@@ -100,26 +100,26 @@ start_write_config() {
     supervisorctl stop all
     chmod a+x $installPath/ethminerproxy_linux
     if [ -d "/etc/supervisor/conf/" ]; then
-        rm /etc/supervisor/conf/MinerProxy.conf -f
-        echo "[program:MinerProxy]" >>/etc/supervisor/conf/MinerProxy.conf
-        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisor/conf/MinerProxy.conf
-        echo "directory=${installPath}/" >>/etc/supervisor/conf/MinerProxy.conf
-        echo "autostart=true" >>/etc/supervisor/conf/MinerProxy.conf
-        echo "autorestart=true" >>/etc/supervisor/conf/MinerProxy.conf
+        rm /etc/supervisor/conf/ethminerproxy.conf -f
+        echo "[program:ethminerproxy]" >>/etc/supervisor/conf/ethminerproxy.conf
+        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisor/conf/ethminerproxy.conf
+        echo "directory=${installPath}/" >>/etc/supervisor/conf/ethminerproxy.conf
+        echo "autostart=true" >>/etc/supervisor/conf/ethminerproxy.conf
+        echo "autorestart=true" >>/etc/supervisor/conf/ethminerproxy.conf
     elif [ -d "/etc/supervisor/conf.d/" ]; then
-        rm /etc/supervisor/conf.d/MinerProxy.conf -f
-        echo "[program:MinerProxy]" >>/etc/supervisor/conf.d/MinerProxy.conf
-        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisor/conf.d/MinerProxy.conf
-        echo "directory=${installPath}/" >>/etc/supervisor/conf.d/MinerProxy.conf
-        echo "autostart=true" >>/etc/supervisor/conf.d/MinerProxy.conf
-        echo "autorestart=true" >>/etc/supervisor/conf.d/MinerProxy.conf
+        rm /etc/supervisor/conf.d/ethminerproxy.conf -f
+        echo "[program:ethminerproxy]" >>/etc/supervisor/conf.d/ethminerproxy.conf
+        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisor/conf.d/ethminerproxy.conf
+        echo "directory=${installPath}/" >>/etc/supervisor/conf.d/ethminerproxy.conf
+        echo "autostart=true" >>/etc/supervisor/conf.d/ethminerproxy.conf
+        echo "autorestart=true" >>/etc/supervisor/conf.d/ethminerproxy.conf
     elif [ -d "/etc/supervisord.d/" ]; then
-        rm /etc/supervisord.d/MinerProxy.ini -f
-        echo "[program:MinerProxy]" >>/etc/supervisord.d/MinerProxy.ini
-        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisord.d/MinerProxy.ini
-        echo "directory=${installPath}/" >>/etc/supervisord.d/MinerProxy.ini
-        echo "autostart=true" >>/etc/supervisord.d/MinerProxy.ini
-        echo "autorestart=true" >>/etc/supervisord.d/MinerProxy.ini
+        rm /etc/supervisord.d/ethminerproxy.ini -f
+        echo "[program:ethminerproxy]" >>/etc/supervisord.d/ethminerproxy.ini
+        echo "command=${installPath}/ethminerproxy_linux" >>/etc/supervisord.d/ethminerproxy.ini
+        echo "directory=${installPath}/" >>/etc/supervisord.d/ethminerproxy.ini
+        echo "autostart=true" >>/etc/supervisord.d/ethminerproxy.ini
+        echo "autorestart=true" >>/etc/supervisord.d/ethminerproxy.ini
     else
         echo
         echo "----------------------------------------------------------------"
@@ -159,7 +159,7 @@ start_write_config() {
     echo
     echo "安装完成...守护模式无日志，需要日志的请以nohup ./ethminerproxy_linux &方式运行"
     echo
-    echo "以下配置文件：/etc/MinerProxy/conf.yaml，网页端可修改登录密码token"
+    echo "以下配置文件：/etc/ethminerproxy/conf.yaml，网页端可修改登录密码token"
     echo
     echo "[*---------]"
     sleep 1
@@ -173,18 +173,18 @@ start_write_config() {
     sleep 1
     echo "[******----]"
     echo
-    cat /etc/MinerProxy/conf.yaml
+    cat /etc/ethminerproxy/conf.yaml
     echo "----------------------------------------------------------------"
 }
 
 uninstall() {
     clear
     if [ -d "/etc/supervisor/conf/" ]; then
-        rm /etc/supervisor/conf/MinerProxy.conf -f
+        rm /etc/supervisor/conf/ethminerproxy.conf -f
     elif [ -d "/etc/supervisor/conf.d/" ]; then
-        rm /etc/supervisor/conf.d/MinerProxy.conf -f
+        rm /etc/supervisor/conf.d/ethminerproxy.conf -f
     elif [ -d "/etc/supervisord.d/" ]; then
-        rm /etc/supervisord.d/MinerProxy.ini -f
+        rm /etc/supervisord.d/ethminerproxy.ini -f
     fi
     supervisorctl reload
     echo -e "$yellow 已关闭自启动${none}"
@@ -193,13 +193,21 @@ uninstall() {
 clear
 while :; do
     echo
-    echo "-------- MinerProxy 一键安装脚本 by:ethminerproxy--------"
+    echo "-------- ethminerproxy 一键安装脚本 by:ethminerproxy--------"
     echo "github下载地址:https://github.com/ethminerproxy/MinerProxy"
     echo "官方电报群:https://t.me/ethminerproxy"
     echo
-    echo " 1. 安装MinerProxy"
+    echo " 1. 安  装"
     echo
-    echo " 2. 卸载MinerProxy"
+    echo " 2. 卸  载"
+    echo
+    echo " 3. 更  新"
+    echo
+    echo " 4. 启  动"
+    echo
+    echo " 5. 重  启"
+    echo
+    echo " 6. 停  止"
     echo
     read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
     case $choose in
@@ -212,8 +220,27 @@ while :; do
         uninstall
         break
         ;;
+    3)
+        update
+        ;;
+    4)
+        start
+        ;;
+    5)
+        restart
+        ;;
+    6)
+        stop
+        ;;
+    7)
+        change_limit
+        ;;
+    8)
+        check_limit
+        ;;
+
     *)
-        error
+	echo "error請輸入正確的數字！"
         ;;
     esac
 done

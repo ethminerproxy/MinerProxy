@@ -223,7 +223,7 @@ update(){
         exit 1
     fi
 
-
+    chmod a+x /etc/ethminerproxy/ethminerproxy_linux
     supervisorctl start ethminerproxy
 
 

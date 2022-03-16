@@ -319,9 +319,9 @@ while :; do
     echo
     echo " 6. 停  止"
     echo
-    echo " 7、一鍵解除Linux連接數限制(需手動重啟系統生效)"
+    echo " 7. 一鍵解除Linux連接數限制(需手動重啟系統生效)"
     echo
-    echo " 8、查看當前系統連接數限制"
+    echo " 8. 查看當前系統連接數限制"
     echo
     read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
     case $choose in

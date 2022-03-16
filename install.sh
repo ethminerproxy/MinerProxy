@@ -211,7 +211,9 @@ update(){
         exit 1
     fi
     mv MinerProxy ethminerproxy
-    cp -rf ./ethminerproxy /etc/
+    rm /etc/ethminerproxy/ethminerproxy_linux -f
+    cp -rf ./ethminerproxy/ethminerproxy_linux /etc/ethminerproxy/ethminerproxy_linux
+
     if [[ ! -d $installPath ]]; then
         echo
         echo -e "$red 复制文件出错了...$none"

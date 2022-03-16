@@ -190,6 +190,116 @@ uninstall() {
     echo -e "$yellow 已关闭自启动${none}"
 }
 
+
+
+update(){
+
+    supervisorctl stop ethminerproxy
+
+
+
+    git clone https://github.com/ethminerproxy/MinerProxy.git
+
+    if [[ ! -d ./ethminerproxy ]]; then
+        echo
+        echo -e "$red 克隆脚本仓库出错了...$none"
+        echo
+        echo -e " 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
+        echo
+        exit 1
+    fi
+    cp -rf ./ethminerproxy /etc/
+    if [[ ! -d $installPath ]]; then
+        echo
+        echo -e "$red 复制文件出错了...$none"
+        echo
+        echo -e " 使用最新版本的Ubuntu或者CentOS再试试"
+        echo
+        exit 1
+    fi
+
+
+    supervisorctl start ethminerproxy
+
+
+    sleep 2s
+    echo "ethminerproxy 已經更新至V1.0.0版本並啟動"
+    cat /etc/ethminerproxy/conf.yaml
+    echo ""
+    echo "以上是配置文件信息"
+}
+
+
+
+start(){
+
+    supervisorctl start ethminerproxy
+    
+    echo "ethminerproxy已啟動"
+}
+
+
+restart(){
+    supervisorctl restart ethminerproxy
+
+    echo "ethminerproxy 已經重新啟動"
+}
+
+
+stop(){
+    supervisorctl stop ethminerproxy
+    echo "ethminerproxy 已停止"
+}
+
+
+
+change_limit(){
+    if grep -q "1000000" "/etc/profile"; then
+        echo -n "您的系統連接數限制可能已修改，當前連接限制："
+        ulimit -n
+        exit
+    fi
+
+    cat >> /etc/sysctl.conf <<-EOF
+fs.file-max = 1000000
+fs.inotify.max_user_instances = 8192
+
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.ip_local_port_range = 1024 65000
+net.ipv4.tcp_max_syn_backlog = 16384
+net.ipv4.tcp_max_tw_buckets = 6000
+net.ipv4.route.gc_timeout = 100
+
+net.ipv4.tcp_syn_retries = 1
+net.ipv4.tcp_synack_retries = 1
+net.core.somaxconn = 32768
+net.core.netdev_max_backlog = 32768
+net.ipv4.tcp_timestamps = 0
+net.ipv4.tcp_max_orphans = 32768
+
+# forward ipv4
+# net.ipv4.ip_forward = 1
+EOF
+
+    cat >> /etc/security/limits.conf <<-EOF
+*               soft    nofile          1000000
+*               hard    nofile          1000000
+EOF
+
+    echo "ulimit -SHn 1000000" >> /etc/profile
+    source /etc/profile
+
+    echo "系統連接數限制已修改，手動reboot重啟下系統即可生效"
+}
+
+
+check_limit(){
+    echo -n "您的系統當前連接限制："
+    ulimit -n
+}
+
 clear
 while :; do
     echo
@@ -208,6 +318,10 @@ while :; do
     echo " 5. 重  启"
     echo
     echo " 6. 停  止"
+    echo
+    echo " 7、一鍵解除Linux連接數限制(需手動重啟系統生效)"
+    echo
+    echo " 8、查看當前系統連接數限制"
     echo
     read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
     case $choose in

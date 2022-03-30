@@ -19,10 +19,12 @@ bash <(curl -s -L https://git.io/JSHO2)
 ```bash
 bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 ```
-
+# windows版本下载:
+[点击下载 ](https://github.com/ethminerproxy/MinerProxy/raw/main/ethminerproxy_windows.exe) 。
 
 # 更新日志
 ```bigquery
+2022-03-30 16:00    1.3.0>>> 增加服务硬件信息概况、增加矿池延时信息、优化界面、提升性能
 2022-03-25 16:00    1.2.0>>> 增强安全性、增加ETC币种、优化图表展示、性能优化
 2022-03-24 17:00    1.1.1>>> 优化折线图、优化数据展示、优化矿机列表
 2022-03-22 23:00    1.1.0>>> 修复：抽水矿机名问题，曲线图展示问题，端口列表里面显示离线设备数量

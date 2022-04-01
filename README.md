@@ -1,7 +1,24 @@
 # MinerProxy
+
+
 最稳定的ETH以太坊代理中转矿池程序，MinerProxy/矿池代理，支持TCP和SSL协议，支持自定义抽水，高性能高并发，支持web界面管理，包含自启动和进程守护，重启后可以自动运行，会放开防火墙和连接数限制，一键搞定。
 
-# 矿工交流 TG电报群：https://t.me/ethminerproxy
+<p align="center">
+  <a>
+    <img src="https://img.shields.io/badge/Release-1.3.0_ETHASH-orgin.svg" alt="travis">
+  </a>
+  <a>
+    <img src="https://img.shields.io/badge/Last_Update-2022_03_30-orgin.svg" alt="travis">
+  </a>
+  <a>
+    <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
+  </a>
+  <a>
+    <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
+  </a>
+</p>
+
+# 交流 TG电报群：https://t.me/ethminerproxy
 
 <img src="https://minerproxy.vip/css/2.png" alt="">
 <img src="https://minerproxy.vip/css/4.png" alt="">

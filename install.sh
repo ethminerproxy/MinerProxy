@@ -220,10 +220,11 @@ update(){
 
 
     sleep 2s
-    echo "ethminerproxy 已經更新至V1.0.0版本並啟動"
     cat /etc/ethminerproxy/conf.yaml
     echo ""
+    echo "ethminerproxy 已經更新至最新版本並啟動"
     echo "以上是配置文件信息"
+    exit
 }
 
 
@@ -320,7 +321,7 @@ while :; do
     echo
     echo " 8. 查看當前系統連接數限制"
     echo
-    read -p "$(echo -e "请选择 [${magenta}1-2$none]:")" choose
+    read -p "$(echo -e "请选择 [${magenta}1-8$none]:")" choose
     case $choose in
     1)
         install_download

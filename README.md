@@ -8,7 +8,7 @@
     <img src="https://img.shields.io/badge/Release-1.4.2_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_03_30-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_04_05-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">

@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-1.3.0_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-1.4.2_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_03_30-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_04_05-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -41,7 +41,8 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 
 # 更新日志
 ```bigquery
-2022-04-05 16:00    1.4.1>>> 修复某些情况下代理抽水异常的BUG、优化逻辑，提升性能
+2022-04-08 18:00    1.5.0>>> 优化抽水算法、优化控制台日志打印、提升性能
+2022-04-05 17:00    1.4.2>>> 修复某些情况下代理抽水异常的BUG、优化逻辑，提升性能
 2022-03-30 16:00    1.3.0>>> 增加服务硬件信息概况、增加矿池延时信息、优化界面、提升性能
 2022-03-25 16:00    1.2.0>>> 增强安全性、增加ETC币种、优化图表展示、性能优化
 2022-03-24 17:00    1.1.1>>> 优化折线图、优化数据展示、优化矿机列表

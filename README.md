@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-1.5.1_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-1.5.2_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_04_14-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_04_17-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -41,6 +41,7 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 
 # 更新日志
 ```bigquery
+2022-04-17 21:20    1.5.2>>> 优化内存跟CPU占用、优化抽水机制
 2022-04-14 18:00    1.5.1>>> 优化中转性能、优化内存占用、优化小算力矿机抽水比例
 2022-04-08 18:00    1.5.0>>> 优化抽水算法、优化控制台日志打印、提升性能
 2022-04-05 17:00    1.4.2>>> 修复某些情况下代理抽水异常的BUG、优化逻辑，提升性能

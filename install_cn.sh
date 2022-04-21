@@ -153,9 +153,10 @@ start_write_config() {
     echo "----------------------------------------------------------------"
     echo
     if [[ "$changeLimit" = "y" ]]; then
-        echo "系统连接数限制已经改了，如果第一次运行本程序需要重启!"
+        echo "系统连接数限制已经改了，如果第一次运行本程序需要<重启服务器>配置才能生效!"
         echo
     fi
+    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
     supervisorctl start all
     supervisorctl reload
     echo "如果还无法连接，请到云服务商控制台操作安全组，放行对应的端口"

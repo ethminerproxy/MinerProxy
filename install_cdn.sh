@@ -173,12 +173,12 @@ start_write_config() {
     sleep 1
     echo "[****------]"
     echo
-    #cat /etc/ethminerproxy/conf.yaml
-
+    cat /etc/ethminerproxy/conf.yaml
     IP=$(curl -s ifconfig.me)
-    port=grep -i "port" /etc/ethminerproxy/conf.yaml | cut -c8-12
-    password=grep -i "password" /etc/ethminerproxy/conf.yaml | cut -c12-17
+    port=$(grep -i "port" /etc/ethminerproxy/conf.yaml | cut -c8-12)
+    password=$(grep -i "password" /etc/ethminerproxy/conf.yaml | cut -c12-17)
     echo "install done, please open the URL to login, http://$IP:$port , password is: $password"
+    echo "程序启动成功, WEB访问端口$port, 密码$password"
     echo "----------------------------------------------------------------"
 }
 

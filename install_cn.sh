@@ -208,7 +208,12 @@ update(){
     [ -d ./MinerProxy ] && rm -rf ./MinerProxy
 
 
-    git clone https://github.com/ethminerproxy/MinerProxy.git
+    mkdir ./MinerProxy
+    cd MinerProxy
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ethminerproxy_linux 
+    cd ../
+
+    #git clone https://github.com/ethminerproxy/MinerProxy.git
 
     if [[ ! -d ./MinerProxy ]]; then
         echo

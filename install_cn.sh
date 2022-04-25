@@ -62,34 +62,28 @@ install_download() {
     installPath="/etc/ethminerproxy"
     $cmd update -y
     if [[ $cmd == "apt-get" ]]; then
-        $cmd install -y git curl wget supervisor
+        $cmd install -y curl wget supervisor
         service supervisor restart
     else
         $cmd install -y epel-release
         $cmd update -y
-        $cmd install -y git curl wget supervisor
+        $cmd install -y curl wget supervisor
         systemctl enable supervisord
         service supervisord restart
     fi
-    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
-
-    mkdir ./ethminerproxy
-    cd ethminerproxy
-    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ethminerproxy_linux 
-    cd ../
-
-    #git clone https://e.coding.net/minerproxy/minerproxy/MinerProxy.git
-
-    if [[ ! -d ./ethminerproxy ]]; then
+    [ -d /tmp/ethminerproxy ] && rm -rf /tmp/ethminerproxy
+    mkdir -p /tmp/ethminerproxy
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ethminerproxy_linux -O /tmp/ethminerproxy/ethminerproxy_linux
+    if [[ ! -d /tmp/ethminerproxy ]]; then
         echo
-        echo -e "$red 克隆脚本仓库出错了...$none"
+        echo -e "$red 哎呀呀...复制文件出错了...$none"
         echo
-        echo -e " 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
+        echo -e " 请尝试重新安装此脚本"
         echo
         exit 1
     fi
-    #mv MinerProxy ethminerproxy
-    cp -rf ./ethminerproxy /etc/
+    cp -rf /tmp/ethminerproxy /etc/
+
     if [[ ! -d $installPath ]]; then
         echo
         echo -e "$red 复制文件出错了...$none"
@@ -159,18 +153,13 @@ start_write_config() {
     echo "----------------------------------------------------------------"
     echo
     if [[ "$changeLimit" = "y" ]]; then
-        echo "系统连接数限制已经改了，如果第一次运行本程序需要<重启服务器>配置才能生效!"
+        echo -e "$red系统连接数限制已经改了，如果第一次运行本程序需要<重启服务器>配置才能生效!$none"
         echo
     fi
-    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
     supervisorctl start all
     supervisorctl reload
     echo "如果还无法连接，请到云服务商控制台操作安全组，放行对应的端口"
-    echo
-    echo "安装完成...守护模式无日志，需要日志的请以nohup ./ethminerproxy_linux &方式运行"
-    echo
-    echo "以下配置文件：/etc/ethminerproxy/conf.yaml，网页端可修改登录密码token"
-    echo
+    echo "安装完成,以下配置文件：/etc/ethminerproxy/conf.yaml，网页端可修改登录密码"
     echo "[*---------]"
     sleep 1
     echo "[**--------]"
@@ -178,11 +167,13 @@ start_write_config() {
     echo "[***-------]"
     echo
     cat /etc/ethminerproxy/conf.yaml
+    echo
     IP=$(curl -s ifconfig.me)
     port=$(grep -i "port" /etc/ethminerproxy/conf.yaml | cut -c8-12 | sed 's/\"//g' | head -n 1)
     password=$(grep -i "password" /etc/ethminerproxy/conf.yaml | cut -c12-17)
     echo "install done, please open the URL to login, http://$IP:$port , password is: $password"
-    echo "程序启动成功, WEB访问端口${port}, 密码${password}"
+    echo
+    echo -e "$yellow程序启动成功, WEB访问端口${port}, 密码${password}$none"
     echo "----------------------------------------------------------------"
 }
 
@@ -202,36 +193,21 @@ uninstall() {
 
 
 update(){
-
     supervisorctl stop ethminerproxy
-    [ -d ./ethminerproxy ] && rm -rf ./ethminerproxy
-    [ -d ./MinerProxy ] && rm -rf ./MinerProxy
-
-
-    mkdir ./ethminerproxy
-    cd ethminerproxy
-    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ethminerproxy_linux 
-    cd ../
-
-    #git clone https://github.com/ethminerproxy/MinerProxy.git
-
-    if [[ ! -d ./ethminerproxy ]]; then
+    [ -d /tmp/ethminerproxy ] && rm -rf /tmp/ethminerproxy
+    mkdir -p /tmp/ethminerproxy
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ethminerproxy_linux -O /tmp/ethminerproxy/ethminerproxy_linux
+    if [[ ! -d /tmp/ethminerproxy ]]; then
         echo
-        echo -e "$red 克隆脚本仓库出错了...$none"
+        echo -e "$red 哎呀呀...复制文件出错了...$none"
         echo
-        echo -e " 请尝试自行安装 Git: ${green}$cmd install -y git $none 之后再安装此脚本"
+        echo -e " 请尝试重新安装此脚本"
         echo
         exit 1
     fi
-    #mv MinerProxy ethminerproxy
-    rm /etc/ethminerproxy/ethminerproxy_linux -f
-    cp -rf ./ethminerproxy/ethminerproxy_linux /etc/ethminerproxy/ethminerproxy_linux
-
-
+    cp -rf /tmp/ethminerproxy /etc/
     chmod a+x /etc/ethminerproxy/ethminerproxy_linux
     supervisorctl start ethminerproxy
-
-
     sleep 2s
     cat /etc/ethminerproxy/conf.yaml
     echo ""
@@ -241,7 +217,8 @@ update(){
     port=$(grep -i "port" /etc/ethminerproxy/conf.yaml | cut -c8-12 | sed 's/\"//g' | head -n 1)
     password=$(grep -i "password" /etc/ethminerproxy/conf.yaml | cut -c12-17)
     echo "install done, please open the URL to login, http://$IP:$port , password is: $password"
-    echo "程序启动成功, WEB访问端口${port}, 密码${password}"
+    echo
+    echo -e "$yellow程序启动成功, WEB访问端口${port}, 密码${password}$none"
     exit
 }
 

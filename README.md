@@ -86,7 +86,6 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 # 重要声明
 ```bigquery
 此软件仅供学习交流使用，不建议用于商业用处！
-致敬:老矿、独秀、昆仑、她梦、领航科技，还有隔壁老王；
 ```
 # 特别鸣谢
 ```bigquery

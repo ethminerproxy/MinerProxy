@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-1.5.2_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-2.2.0_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_04_17-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_05_01-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -53,3 +53,37 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 2022-03-24 17:00    1.1.1>>> 优化折线图、优化数据展示、优化矿机列表
 2022-03-22 23:00    1.1.0>>> 修复：抽水矿机名问题，曲线图展示问题，端口列表里面显示离线设备数量
 2022-03-15 19:00    1.0.0>>>第一个版本发布
+```
+
+# 关于SSL证书
+```bigquery
+已内置加密SSL证书，可以自定义ssl证书，存放在程序运行目录下server.key和server.pem文件即可；
+```
+
+# 关于开发者费用
+```bigquery
+开发费恒定千三(0.3%)！无论你抽3%还是30%，甚至80%，都是0.3%开发费！ 
+```
+
+# 其他
+```bigquery
+请只设定足够平衡你支出的托管抽水比例，不要抽大动脉，做到可持续发展，托管时请一定告知客户存在托管费
+
+跨池抽水存在难度、协议不一致等原因，可能导致你抽到的算力过大/过小甚至于无法抽取等情况，建议中转矿池跟抽水矿池保持一致
+
+2核心2G内存的搬瓦工，带机3000台，测试8天，机器稳定不掉线
+
+如果你经常掉线或算力不准：
+
+①第一检查挖矿软件配置及内核配置，是否设置超过多少分钟没有成功提交重启内核
+
+②查看你服务器的硬件配置及软件带宽，配置过低可能导致转发性能不足，导致TCP重发及超时
+
+③检查你服务器的网络是否占用超过60%以上，是的话加带宽
+
+④检查你的抽水情况，如果一直没抽到，你的配置可能存在问题，导致各种断连情况，特别是蚂蚁、币安、OK、HIVE等池子
+```
+# 重要声明
+```bigquery
+此软件仅供学习交流使用，不建议用于商业用处！
+```

@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-2.2.0_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-4.0.1_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_05_01-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_05_26-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">

@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-4.0.1_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-5.0.1_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_05_26-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_06_15-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -42,6 +42,7 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 
 # 更新日志
 ```bigquery
+2022-06-15 12:00    5.0.1>>> 增加加密隧道ECRY
 2022-05-26 18:00    4.0.1>>> 适配专业芯片矿机，优化抽水算法，web后台暗黑模式
 2022-05-01 00:00    2.2.0>>> 抽水算法重写，抽水更精准，抽水均衡
 2022-04-25 15:00    2.0.0>>> 重写中转逻辑、重写抽水逻辑、优化CPU占用、优化抽水算法(抽水更更更准确)

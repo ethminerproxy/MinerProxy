@@ -18,7 +18,7 @@
   </a>
 </p>
 
-# 本地客户端ECRY已上线(加密客户端)：https://t.me/ethminerproxy
+# 本地客户端ECRY已上线(加密客户端)
 请前往<a href="https://github.com/ethminerproxy/MinerProxy/tree/main/ECRY">https://github.com/ethminerproxy/MinerProxy/tree/main/ECRY</a>自行下载
     
 # 交流 TG电报群：https://t.me/ethminerproxy

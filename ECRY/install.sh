@@ -73,7 +73,8 @@ install_download() {
     fi
     [ -d /tmp/ecry ] && rm -rf /tmp/ecry
     mkdir -p /tmp/ecry
-    wget https://raw.githubusercontent.com/ethminerproxy/MinerProxy/main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
+    #wget https://raw.githubusercontent.com/ethminerproxy/MinerProxy/main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
     if [[ ! -d /tmp/ecry ]]; then
         echo
         echo -e "$red 哎呀呀...复制文件出错了...$none"
@@ -170,7 +171,8 @@ start_write_config() {
     echo
     cat /etc/ecry/conf.yaml
     echo
-    IP=$(curl -s ifconfig.me)
+    #IP=$(curl -s ifconfig.me)
+    IP=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
     port=$(grep -i "port" /etc/ecry/conf.yaml | cut -c8-12 | sed 's/\"//g' | head -n 1)
     password=$(grep -i "password" /etc/ecry/conf.yaml | cut -c12-17)
     echo "install done, please open the URL to login, http://$IP:$port , password is: $password"
@@ -198,7 +200,8 @@ update(){
     supervisorctl stop ecry
     [ -d /tmp/ecry ] && rm -rf /tmp/ecry
     mkdir -p /tmp/ecry
-    wget https://raw.githubusercontent.com/ethminerproxy/MinerProxy/main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
+    #wget https://raw.githubusercontent.com/ethminerproxy/MinerProxy/main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
+    wget https://cdn.jsdelivr.net/gh/ethminerproxy/MinerProxy@main/ECRY/ECRY_linux -O /tmp/ecry/ecry_linux
     if [[ ! -d /tmp/ecry ]]; then
         echo
         echo -e "$red 哎呀呀...复制文件出错了...$none"
@@ -215,7 +218,8 @@ update(){
     echo ""
     echo "以上是配置文件信息"
     echo "ecry 已經更新至最新版本並啟動"
-    IP=$(curl -s ifconfig.me)
+    #IP=$(curl -s ifconfig.me)
+    IP=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
     port=$(grep -i "port" /etc/ecry/conf.yaml | cut -c8-12 | sed 's/\"//g' | head -n 1)
     password=$(grep -i "password" /etc/ecry/conf.yaml | cut -c12-17)
     echo "install done, please open the URL to login, http://$IP:$port , password is: $password"

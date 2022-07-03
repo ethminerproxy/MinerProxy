@@ -5,10 +5,10 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-5.0.2_ETHASH-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-5.1.0_ETHASH-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_06_16-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_07_01-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -45,6 +45,7 @@ bash <(curl -s -L http://p.sogou.com/su/SMtMO6)
 
 # 更新日志
 ```bigquery
+2022-07-01 14:00    5.1.0>>> 修复专业机BUG
 2022-06-16 14:00    5.0.2>>> 修复：内存越界BUG、运行状态显示不及时
 2022-06-15 12:00    5.0.1>>> 增加加密隧道ECRY
 2022-05-26 18:00    4.0.1>>> 适配专业芯片矿机，优化抽水算法，web后台暗黑模式
